@@ -34,6 +34,6 @@ ENV PORT=8008
 EXPOSE ${PORT}
 
 
-CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --NotebookApp.password=${NOTEBOOK_PASSWORD} --NotebookApp.allow_origin = '*'"]
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --NotebookApp.password=${NOTEBOOK_PASSWORD} --NotebookApp.allow_origin='*'"]
 
 #RUN pip install --no-cache myPythonPackage
