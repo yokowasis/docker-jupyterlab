@@ -23,6 +23,8 @@ RUN micromamba install --yes --name base -c bioconda -c conda-forge \
       tensorflow \
       xeus-cling \
       spacy 
+      
+RUN pip install --no-cache Sastrawi
 
 RUN micromamba clean --all --yes
 RUN ~/.deno/bin/deno jupyter --install --unstable --quiet
@@ -36,6 +38,5 @@ ENV TOKEN=123123
 
 EXPOSE ${PORT}
 
-CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --ServerApp.allow_origin='*' --ServerApp.token=${TOKEN}"]
 
-#RUN pip install --no-cache myPythonPackage
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --ServerApp.allow_origin='*' --ServerApp.token=${TOKEN}"]
