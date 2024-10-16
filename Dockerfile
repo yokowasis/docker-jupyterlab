@@ -28,12 +28,10 @@ RUN ~/.deno/bin/deno jupyter --install --unstable --quiet
 
 ARG MAMBA_DOCKERFILE_ACTIVATE=1
 
-ENV NOTEBOOK_PASSWORD=''
 ENV PORT=8008
 
 EXPOSE ${PORT}
 
-
-CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --PasswordIdentityProvider.hashed_password='${NOTEBOOK_PASSWORD}' --ServerApp.allow_origin='*'"]
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --ServerApp.allow_origin='*'"]
 
 #RUN pip install --no-cache myPythonPackage
