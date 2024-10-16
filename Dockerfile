@@ -17,6 +17,9 @@ RUN micromamba install --yes --name base -c bioconda -c conda-forge \
       scikit-learn \
       pytorch \
       nltk \
+      openpyxl \
+      category_encoders \
+      scikit-learn \
       tensorflow \
       xeus-cling \
       spacy 
