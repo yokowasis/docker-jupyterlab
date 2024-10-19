@@ -8,6 +8,7 @@ USER mambauser
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh
 
 ENV CONDA_PACKAGES=""
+ENV PIP_PACKAGES=""
 
 RUN micromamba install --yes --name base -c bioconda -c conda-forge \
       python=3.10 \
@@ -16,7 +17,7 @@ RUN micromamba install --yes --name base -c bioconda -c conda-forge \
       jupyterlab \
       ${CONDA_PACKAGES}
       
-# RUN pip install --no-cache Sastrawi
+RUN if [ -n "${PIP_PACKAGES}" ]; then micromamba run -n base pip install --no-cache ${PIP_PACKAGES}; fi
 
 RUN micromamba clean --all --yes
 RUN ~/.deno/bin/deno jupyter --install --unstable --quiet
