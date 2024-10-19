@@ -6,9 +6,10 @@ services:
     expose:
       - 8008
     environment:
-      - PORT=${TOKEN:8008}
+      - PORT=${PORT:-8008}
       - TOKEN=${SERVICE_PASSWORD_TOKEN}
-      - CONDA_PACKAGES=${CONDA_PACKAGES:pandas numpy matplotlib seaborn scikit-learn pytorch nltk openpyxl category_encoders scikit-learn tensorflow spacy}
+      - CONDA_PACKAGES=${CONDA_PACKAGES:-pandas numpy matplotlib seaborn scikit-learn pytorch nltk openpyxl category_encoders scikit-learn tensorflow spacy}
+      - PIP_PACKAGES=${PIP_PACKAGES:-sastrawi}
     volumes:
       - type: bind
         source: ./data
