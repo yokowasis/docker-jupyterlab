@@ -7,24 +7,16 @@ RUN apt-get update && apt-get install -y curl unzip && apt-get clean && rm -rf /
 USER mambauser
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh
 
+ENV CONDA_PACKAGES=""
+
 RUN micromamba install --yes --name base -c bioconda -c conda-forge \
       python=3.10 \
-      jupyterlab \
-      pandas \
-      numpy \
-      matplotlib \
-      seaborn \
-      scikit-learn \
-      pytorch \
-      nltk \
-      openpyxl \
-      category_encoders \
-      scikit-learn \
-      tensorflow \
+      pip \
       xeus-cling \
-      spacy 
+      jupyterlab \
+      ${CONDA_PACKAGES}
       
-RUN pip install --no-cache Sastrawi
+# RUN pip install --no-cache Sastrawi
 
 RUN micromamba clean --all --yes
 RUN ~/.deno/bin/deno jupyter --install --unstable --quiet
@@ -34,9 +26,8 @@ RUN ~/.deno/bin/deno jupyter --install --unstable --quiet
 ARG MAMBA_DOCKERFILE_ACTIVATE=1
 
 ENV PORT=8008
-ENV TOKEN=123123
+ENV TOKEN=SomeRandomToken
 
 EXPOSE ${PORT}
-
 
 CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=${PORT} --no-browser --allow-root --ServerApp.allow_origin='*' --ServerApp.token=${TOKEN}"]

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  jupyterlab:
+    image: yokowasis/jupyterlab
+    expose:
+      - 8008
+    environment:
+      - PORT=${TOKEN:8008}
+      - TOKEN=${SERVICE_PASSWORD_TOKEN}
+      - CONDA_PACKAGES=${CONDA_PACKAGES:pandas numpy matplotlib seaborn scikit-learn pytorch nltk openpyxl category_encoders scikit-learn tensorflow spacy }
+    volumes:
+      - type: bind
+        source: ./data
+        target: /tmp
+        is_directory: true
