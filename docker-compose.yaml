@@ -18,4 +18,4 @@ services:
       - CONDA_PACKAGES=${CONDA_PACKAGES:-pandas numpy matplotlib seaborn scikit-learn pytorch nltk openpyxl category_encoders scikit-learn tensorflow spacy}
       - PIP_PACKAGES=${PIP_PACKAGES:-sastrawi}
     volumes:
-      - data:/home/mambauser/data
+      - jupyterlab_data:/home/mambauser/data
