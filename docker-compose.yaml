@@ -1,3 +1,9 @@
+# documentation: https://jupyterlab.readthedocs.io/en/latest/
+# slogan: JupyterLab Notebook with C++ (xeus-cling) and Javascript (Deno) Kernel
+# tags: jupyter,notebook,python,cpp,deno,jupyterlab
+# logo: svgs/your-service.svg
+# port: 8008
+
 version: '3.8'
 
 services:
