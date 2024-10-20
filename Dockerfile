@@ -5,7 +5,10 @@ USER root
 RUN apt-get update && apt-get install -y curl unzip && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER mambauser
-WORKDIR /home/mambauser
+
+RUN mkdir -p /home/mambauser/data
+
+WORKDIR /home/mambauser/data
 
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh
 
