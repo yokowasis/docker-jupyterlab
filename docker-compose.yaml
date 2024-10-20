@@ -20,5 +20,5 @@ services:
     volumes:
       - type: bind
         source: ./data
-        target: /home/mambauser
+        target: /home/mambauser/data
         is_directory: true
